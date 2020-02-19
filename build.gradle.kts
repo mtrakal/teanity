@@ -15,3 +15,8 @@ apply(from = "helper.gradle")
 tasks.register("clean", Delete::class.java) {
     delete(rootProject.buildDir)
 }
+tasks.wrapper {
+    // https://services.gradle.org/distributions/
+    gradleVersion = Gradle.wrapper
+    distributionType = Wrapper.DistributionType.ALL
+}
