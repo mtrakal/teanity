@@ -4,10 +4,27 @@ import org.gradle.kotlin.dsl.maven
 object Repositories {
 
     fun with(handler: RepositoryHandler) = with(handler) {
-        google()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+                includeGroupByRegex("android\\.arch.*")
+            }
+        }
         jcenter()
-        maven(url = "https://maven.fabric.io/public")
-        maven(url = "https://jitpack.io")
+        maven(url = "https://maven.fabric.io/public") {
+            content {
+                includeGroupByRegex("com\\.crashlytics.*")
+                includeGroupByRegex("io\\.fabric.*")
+            }
+        }
+        maven(url = "https://jitpack.io") {
+            content {
+                includeGroupByRegex("com\\.github.*")
+                includeGroupByRegex("wiki\\.depasquale.*")
+            }
+        }
     }
 
 }
