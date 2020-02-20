@@ -1,0 +1,18 @@
+plugins {
+    id("com.android.library")
+    id("kotlin-android")
+    id 'kotlin-android-extensions'
+}
+
+dependencies {
+    implementation(Lib.kotlin.lib)
+
+    api(Lib.androidx.constraint)
+    api(Lib.androidx.material)
+    api(Lib.androidx.appcompat)
+    api(Lib.kotlin.coroutines)
+}
+
+afterEvaluate {
+    apply from: "../groovy.gradle"
+}
